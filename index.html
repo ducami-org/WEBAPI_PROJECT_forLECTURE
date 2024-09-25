@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>지도 띄우기</title>
+  </head>
+  <body>
+    <div id="map" style="width: 100vw; height: 100vh"></div>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=96736161c178005e19ef53d61992f0f0"></script>
+    <script>
+      navigator.geolocation.getCurrentPosition((position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(position);
+        console.log(latitude, longitude);
+        let container = document.getElementById("map");
+        let options = {
+          center: new kakao.maps.LatLng(latitude, longitude),
+          level: 1,
+        };
+
+        let map = new kakao.maps.Map(container, options);
+      });
+    </script>
+  </body>
+</html>
